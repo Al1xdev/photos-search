@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 15px 100px 15px 0;
+  background: rgba(107, 126, 160, 0.1);
+  border-radius: 10px;
+}
+
+.header .icon-saved {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
