@@ -3,35 +3,41 @@ import Modal from 'react-modal';
 
 import { getPhotos, getSearchPhotos } from '../../api';
 import ImageItem from '../../components/image-item';
+import Loader from '../../components/loader';
 
 import './home.css';
 
-const Home = () => {
+const Home = ({ setFavorit, favorit }) => {
   const [photos, setPhotos] = useState([]);
-  const [search, setSearch] = useState("");
-  const [query, setQuery] = useState("")
+  const [search, setSearch] = useState('');
+  const [query, setQuery] = useState('');
   const [currentPhoto, setCurrentPhoto] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    getPhotos()
-      .then(( {data} ) => setPhotos(data));
+    getPhotos().then(({ data }) => {
+      setIsLoading(true);
+      setPhotos(data);
+    });
   }, []);
 
-  useEffect(async () => {
+  useEffect(() => {
     if (query !== undefined && query !== '') {
-      getSearchPhotos(query)
-        .then(( {data} ) => setPhotos(data.results));
+      getSearchPhotos(query).then(({ data }) => {
+        setIsLoading(true);
+        setPhotos(data.results);
+      });
     }
   }, [query]);
 
-  const updateSearch = e => {
-    setSearch(e.target.value)
-  }
+  const updateSearch = (e) => {
+    setSearch(e.target.value);
+  };
 
   const searchPhotos = (e) => {
     e.preventDefault();
     setQuery(search);
-    setSearch('')
+    setSearch('');
   };
 
   Modal.setAppElement('div');
@@ -49,8 +55,8 @@ const Home = () => {
           />
           <button className="button">
             <svg
-              width="32px"
-              height="32px"
+              width="30px"
+              height="30px"
               viewBox="0 0 32 32"
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
@@ -67,10 +73,21 @@ const Home = () => {
         </form>
       </div>
       <div className="card-list">
-        {photos.length === 0 ? <p>Photos not found</p> : null}
-        {photos.map((photo) => {
-          return <ImageItem photo={photo} setCurrentPhoto={setCurrentPhoto} key={photo.id} />;
-        })}
+        {isLoading ? (
+          photos.map((photo) => {
+            return (
+              <ImageItem
+                key={photo.id}
+                photo={photo}
+                setCurrentPhoto={setCurrentPhoto}
+                favorit={favorit}
+                setFavorit={setFavorit}
+              />
+            );
+          })
+        ) : (
+          <Loader />
+        )}
       </div>
       <Modal isOpen={!!currentPhoto} className="modal">
         <div>
