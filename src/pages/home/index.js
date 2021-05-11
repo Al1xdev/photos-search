@@ -90,8 +90,8 @@ const Home = ({ setFavorit, favorit }) => {
         )}
       </div>
       <Modal isOpen={!!currentPhoto} className="modal">
-        <div>
-          <img src={currentPhoto} alt="Selected item" />
+        <div className="modal-content">
+          <img src={currentPhoto} alt="Selected item" className="modal-img"/>
           <button onClick={() => setCurrentPhoto(null)} className="button-modal">
             <svg
               height="329pt"

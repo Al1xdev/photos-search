@@ -10,6 +10,7 @@
   font-size: 20px;
   border-radius: 20px;
   background: #f5f5f5;
+  box-shadow: -1px 4px 16px 5px rgba(0, 0, 0, 0.2);
 }
 
 .search-row {
@@ -30,6 +31,10 @@
   flex-wrap: wrap;
 }
 
+.modal-img {
+  max-width: 100%;
+}
+
 .button-modal {
   background: none;
   outline: none;
@@ -41,6 +46,11 @@
   height: 30px;
   fill: #fff;
   margin-left: 10px;
+  opacity: .6;
+}
+
+.button-modal:hover svg {
+  opacity: .9;
 }
 
 .modal {
@@ -50,4 +60,27 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 876px) {
+  .input {
+    width: 305px;
+  }
+}
+
+@media (max-width: 500px) {
+  .main .button {
+    margin-left: -2rem;
+  }
+
+  .modal-content {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    padding: 0 5px;
+  }
+
+  .modal-content .button-modal{
+    margin-bottom: 10px;
+  }
 }

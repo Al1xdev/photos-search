@@ -1,0 +1,18 @@
+.favorit {
+  padding-top: 10px;
+}
+
+.favorit-title {
+  font-family: "Helvetica Neue";
+  font-weight: 300;
+  font-size: 40px;
+}
+
+.sub-title {
+  margin-top: 30px;
+  font-size: 22px;
+}
+
+.favorit-img {
+  width: 280px;
+}

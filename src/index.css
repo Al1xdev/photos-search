@@ -60,3 +60,8 @@ body::-webkit-scrollbar-thumb {
   color: red;
 }
 
+@media (max-width: 610px) {
+	.container {
+		padding-top: 15px;
+	}
+}
