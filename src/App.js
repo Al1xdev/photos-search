@@ -16,8 +16,16 @@ function App() {
         <Router>
           <Header />
           <Switch>
-            <Route exact path="/" render={() => <Home favorit={favorit} setFavorit={setFavorit} />} />
-            <Route exact path="/favorite" render={() => <Favorite favorit={favorit} />} />
+            <Route
+              exact
+              path="/"
+              render={() => <Home favorit={favorit} setFavorit={setFavorit} />}
+            />
+            <Route
+              exact
+              path="/favorit"
+              render={() => <Favorite favorit={favorit} setFavorit={setFavorit} />}
+            />
           </Switch>
         </Router>
       </div>
