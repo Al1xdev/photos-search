@@ -17,6 +17,12 @@
   margin-top: 10px;
 }
 
+.loader-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .main .button {
   margin-left: -2.5rem;
   background: none;
@@ -26,9 +32,6 @@
 
 .card-list {
   margin-top: 15px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
 .modal-img {
@@ -42,8 +45,6 @@
 }
 
 .button-modal svg {
-  width: 30px;
-  height: 30px;
   fill: #fff;
   margin-left: 10px;
   opacity: .6;

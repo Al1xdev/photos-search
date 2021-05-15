@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
 import { getPhotos, getSearchPhotos } from '../../api';
 import ImageItem from '../../components/image-item';
@@ -22,6 +23,7 @@ const Home = ({ setFavorit, favorit }) => {
   }, []);
 
   useEffect(() => {
+    setIsLoading(false);
     if (query !== undefined && query !== '') {
       getSearchPhotos(query).then(({ data }) => {
         setIsLoading(true);
@@ -72,31 +74,33 @@ const Home = ({ setFavorit, favorit }) => {
           </button>
         </form>
       </div>
+      <div className="loader-wrapper">{!isLoading && <Loader />} </div>
       <div className="card-list">
-        {isLoading ? (
-          photos.map((photo) => {
-            return (
-              <ImageItem
-                key={photo.id}
-                photo={photo}
-                setCurrentPhoto={setCurrentPhoto}
-                favorit={favorit}
-                setFavorit={setFavorit}
-              />
-            );
-          })
-        ) : (
-          <Loader />
-        )}
+        <ResponsiveMasonry columnsCountBreakPoints={{ 320: 1, 500: 2, 876: 3, 1200: 4 }}>
+          <Masonry columnsCount={4}>
+            {isLoading &&
+              photos.map((photo) => {
+                return (
+                  <ImageItem
+                    key={photo.id}
+                    photo={photo}
+                    setCurrentPhoto={setCurrentPhoto}
+                    favorit={favorit}
+                    setFavorit={setFavorit}
+                  />
+                );
+              })}
+          </Masonry>
+        </ResponsiveMasonry>
       </div>
       <Modal isOpen={!!currentPhoto} className="modal">
         <div className="modal-content">
-          <img src={currentPhoto} alt="Selected item" className="modal-img"/>
+          <img src={currentPhoto} alt="Selected item" className="modal-img" />
           <button onClick={() => setCurrentPhoto(null)} className="button-modal">
             <svg
-              height="329pt"
+              height="30px"
               viewBox="0 0 329.26933 329"
-              width="329pt"
+              width="30px"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0" />
