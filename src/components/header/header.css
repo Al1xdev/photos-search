@@ -7,6 +7,10 @@
   border-radius: 10px;
 }
 
+.link {
+  margin-left: 10px;
+}
+
 .header .icon-saved {
   width: 30px;
   height: 30px;

@@ -8,28 +8,31 @@ import Loader from '../../components/loader';
 
 import './home.css';
 
-const Home = ({ setFavorit, favorit }) => {
+const Home = ({ setFavorit, favorit, search, setSearch, setHistoryItems, historyItems }) => {
   const [photos, setPhotos] = useState([]);
-  const [search, setSearch] = useState('');
   const [query, setQuery] = useState('');
   const [currentPhoto, setCurrentPhoto] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    getPhotos().then(({ data }) => {
+    async function fetchData() {
+      const { data } = await getPhotos();
       setIsLoading(true);
       setPhotos(data);
-    });
+    }
+    fetchData();
   }, []);
 
   useEffect(() => {
-    setIsLoading(false);
-    if (query !== undefined && query !== '') {
-      getSearchPhotos(query).then(({ data }) => {
+    async function fetchDataSearch() {
+      setIsLoading(false);
+      if (query !== undefined && query !== '') {
+        const { data } = await getSearchPhotos(query);
         setIsLoading(true);
         setPhotos(data.results);
-      });
+      }
     }
+    fetchDataSearch();
   }, [query]);
 
   const updateSearch = (e) => {
@@ -39,6 +42,7 @@ const Home = ({ setFavorit, favorit }) => {
   const searchPhotos = (e) => {
     e.preventDefault();
     setQuery(search);
+    setHistoryItems([...historyItems, search]);
     setSearch('');
   };
 

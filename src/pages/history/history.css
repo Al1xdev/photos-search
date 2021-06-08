@@ -1,0 +1,20 @@
+.history {
+  max-width: 800px;
+  padding: 10px 10px 0;
+}
+
+.key-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.history .btn-key {
+  border-radius: 6px;
+  border: 1px solid #000;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 20px;
+}
