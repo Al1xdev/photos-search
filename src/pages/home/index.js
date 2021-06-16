@@ -5,22 +5,28 @@ import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { getPhotos, getSearchPhotos } from '../../api';
 import ImageItem from '../../components/image-item';
 import Loader from '../../components/loader';
+import ErrorIndicator from '../../components/error-indicator';
 
 import './home.css';
 
 const Home = ({ setFavorit, favorit, search, setSearch, setHistoryItems, historyItems }) => {
-  const [photos, setPhotos] = useState([]);
   const [query, setQuery] = useState('');
   const [currentPhoto, setCurrentPhoto] = useState(null);
+  const [photos, setPhotos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
-      const { data } = await getPhotos();
-      setIsLoading(true);
-      setPhotos(data);
+    try {
+      async function fetchData() {
+        const { data } = await getPhotos();
+        setIsLoading(true);
+        setPhotos(data);
+      }
+      fetchData();
+    } catch (error) {
+      setError(true);
     }
-    fetchData();
   }, []);
 
   useEffect(() => {
@@ -79,6 +85,7 @@ const Home = ({ setFavorit, favorit, search, setSearch, setHistoryItems, history
         </form>
       </div>
       <div className="loader-wrapper">{!isLoading && <Loader />} </div>
+      {error && <ErrorIndicator />}
       <div className="card-list">
         <ResponsiveMasonry columnsCountBreakPoints={{ 320: 1, 500: 2, 876: 3, 1200: 4 }}>
           <Masonry columnsCount={4}>
