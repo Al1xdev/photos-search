@@ -1,6 +1,6 @@
 # Photo-search
 
-## [Demo](https://admiring-blackwell-b94b94.netlify.app)
+## [Demo](https://mystifying-jackson-d127f4.netlify.app)
 
 ## Functionality of application
 
