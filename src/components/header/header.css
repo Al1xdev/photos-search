@@ -1,13 +1,28 @@
 .header {
+  padding: 25px 0;
+  background: #000000;
+}
+
+.header-wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 15px 100px 15px;
-  background: rgba(107, 126, 160, 0.1);
-  border-radius: 10px;
 }
 
 .link {
+  margin-left: 22px;
+}
+
+.logo-title {
+  font-size: 24px;
+  line-height: 29px;
+  color: #ffffff;
+  margin-left: 25px;
+}
+
+.link-title {
+  font-size: 18px;
+  line-height: 21px;
+  color: #ffffff;
   margin-left: 10px;
 }
 

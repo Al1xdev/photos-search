@@ -4,7 +4,7 @@ import RouteItem from '../../router/routeItem';
 
 const App = () => {
   return (
-    <div className="container">
+    <div>
       <RouteItem />
     </div>
   );

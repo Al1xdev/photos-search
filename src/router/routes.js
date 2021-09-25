@@ -17,7 +17,7 @@ export const routes = [
     component: History,
   },
   {
-    exact: false,
+    exact: true,
     path: '*',
     component: NotFound,
   },

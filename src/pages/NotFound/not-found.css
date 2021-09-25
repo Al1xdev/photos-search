@@ -1,0 +1,18 @@
+.not-found {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.not-found__title {
+  color: #fff;
+  font-size: 65px;
+  font-weight: 600;
+  letter-spacing: 8px;
+}
+
+.not-found__descr {
+  color: #fff;
+  font-size: 26px;
+}

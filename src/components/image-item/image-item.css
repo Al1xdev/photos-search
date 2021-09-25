@@ -9,8 +9,7 @@
 }
 
 .card-img:hover {
-  transform: scale(1.04);
-  opacity: .9;
+  filter: blur(2px);
 }
 
 .btn-favor {
