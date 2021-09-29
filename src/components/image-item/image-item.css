@@ -18,11 +18,19 @@
   right: 10px;
   background: none;
   opacity: 0;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
 }
 
 .card-item:hover .btn-favor {
   opacity: 1;
+}
+
+.card-favorite {
+  transition: all 1s ease-in-out;
+}
+
+.card-favorite:hover {
+  transform: scale(1.2);
 }
 
 .card-favorite:active {

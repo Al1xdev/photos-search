@@ -1,23 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import Header from '../../components/header';
 
 import './history.css';
 
 const History = () => {
+  const [recentSearches, setRecentSearches] = useState([]);
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem('recent-searches'));
+    if (items !== null) {
+      setRecentSearches([...items]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <div className="history container">
-      {/* <h2 className="favorit-title">Recent Searches</h2>
-      {historyItems.length === 0 && (
-        <p className="sub-title">Search history is empty!</p>
-      )}
-      <div className="key-wrapper">
-        {historyItems &&
-          historyItems.map((searchItem) => (
-            <div key={searchItem} className="btn-key">
-              {searchItem}
-            </div>
-          ))}
-      </div> */}
-      fgfgf
+    <div className="history">
+      <Header />
+      <div className="container">
+        <div className="history-wrapper">
+          <h2 className="history-title">Ваши запросы</h2>
+          {recentSearches.length === 0 && (
+            <p className="sub-title">История пуста!</p>
+          )}
+          <div className="history-items">
+            {recentSearches &&
+              recentSearches.map((searchItem) => {
+                return (
+                  <div key={searchItem} className="item-key">
+                    {searchItem}
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

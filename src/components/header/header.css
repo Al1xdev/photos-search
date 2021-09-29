@@ -32,8 +32,26 @@
   cursor: pointer;
 }
 
-@media (max-width: 610px) {
-  .header {
-    padding: 15px 15px;
+.active-link {
+  position: relative;
+}
+
+.active-link::after {
+  content: "";
+  width: 30px;
+  height: 2px;
+  bottom: -18px;
+  bottom: -10px;
+  right: 0;
+  position: absolute;
+  border-bottom: 3px solid #FFFFFF;
+}
+
+@media (max-width: 768px) {
+  .link-title, .logo-title {
+    display: none;
+  }
+  .active-link::after {
+    bottom: -18px;
   }
 }

@@ -17,11 +17,15 @@ function Header() {
             <span className="logo-title">ImageStock</span>
           </NavLink>
           <div>
-            <NavLink to="/history">
+            <NavLink to="/history" activeClassName="active-link">
               <img src={history} alt="history" />
               <span className="link-title">История поиска</span>
             </NavLink>
-            <NavLink to="/favorit" className="link">
+            <NavLink
+              to="/favorit"
+              className="link"
+              activeClassName="active-link"
+            >
               <img src={favorites} className="icon-saved" alt="favorites" />
               <span className="link-title">Избранное</span>
             </NavLink>

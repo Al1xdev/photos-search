@@ -15,6 +15,7 @@ import {
 } from '../../store/reducers/Home/actions';
 
 import './home.css';
+import ScrollToTop from '../../components/scrollToTop';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -48,9 +49,15 @@ const Home = () => {
           <input
             type="text"
             className="input"
-            placeholder="ПОИСК"
+            placeholder="поиск"
             onChange={updateSearch}
             value={query}
+            onFocus={(e) => {
+              e.target.placeholder = '';
+            }}
+            onBlur={(e) => {
+              e.target.placeholder = 'поиск';
+            }}
           />
         </form>
       </div>
@@ -74,6 +81,7 @@ const Home = () => {
             </Masonry>
           </ResponsiveMasonry>
         </div>
+        <ScrollToTop />
         <Modal isOpen={!!currentPhoto} className="modal">
           <div className="modal-content">
             <img src={currentPhoto} alt="Selected item" className="modal-img" />
