@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 
-import Header from '../../components/header';
 import ScrollToTop from '../../components/scrollToTop';
 import { removeFromFavorit } from '../../store/reducers/Favorite/actions';
 
@@ -18,7 +17,6 @@ const Favorite = () => {
 
   return (
     <div className="favorit">
-      <Header />
       <h2 className="favorit-title">Избранное</h2>
       <div className="container">
         <div className="card-list">

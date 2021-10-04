@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Loader from '../../components/loader';
 import ImageItem from '../../components/image-item';
-import Header from '../../components/header';
 import ErrorIndicator from '../../components/error-indicator';
 import {
   photosRequest,
@@ -43,7 +42,6 @@ const Home = () => {
 
   return (
     <main className="main">
-      <Header />
       <div className="search-row">
         <form className="form" onSubmit={onSubmit}>
           <input

@@ -7,7 +7,7 @@ import favorites from '../../assets/img/heart.svg';
 import home from '../../assets/img/logo.svg';
 import history from '../../assets/img/history.svg';
 
-function Header() {
+const Header = () => {
   return (
     <div className="header">
       <div className="container">
@@ -34,6 +34,6 @@ function Header() {
       </div>
     </div>
   );
-}
+};
 
 export default Header;

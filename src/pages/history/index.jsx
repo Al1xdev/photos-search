@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import Header from '../../components/header';
-
 import './history.css';
 
 const History = () => {
@@ -17,7 +15,6 @@ const History = () => {
 
   return (
     <div className="history">
-      <Header />
       <div className="container">
         <div className="history-wrapper">
           <h2 className="history-title">Ваши запросы</h2>

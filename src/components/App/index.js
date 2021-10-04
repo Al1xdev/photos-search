@@ -1,12 +1,18 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import Header from '../header';
 
 import RouteItem from '../../router/routeItem';
 
 const App = () => {
   return (
-    <div>
-      <RouteItem />
-    </div>
+    <>
+      <Router>
+        <Header />
+        <RouteItem />
+      </Router>
+    </>
   );
 };
 
